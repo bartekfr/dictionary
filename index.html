@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js ie6 ie6-8 ie6-7" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js ie7 ie6-8 ie6-7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8 ie6-8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<title>Dictionary app</title> 
+<link href="css.css" rel="stylesheet" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+<section id="dictionary">
+	<h1>Backbone Dictionary App</h1>
+	<div class="entry-add">
+		<label for="eng-word">English word	</label>
+		<input type=text id="eng-word" placeholder="english word" autocomplete="off"/> -
+		<label for="translated-word">Translation</label>
+		<input type=text id="translated-word" placeholder="translation" autocomplete="off"/>
+		<button type="submit" class="button"  id="save">add new entry</button>
+	</div>
+	<div class="error"><span></span></div>
+	<ul class="term-list">
+	</ul>
+	<footer class="footer">
+		Author: <a href="http://www.bfryzowicz.pl">Bartek Fryzowicz</a>
+	</footer>
+</section>
+	<script type="text/template" id="item-template">
+		<div class="view">
+			<input type="checkbox" class="edit" title="edit entry"/>
+			<input type="text" class="english" value="<%- englishWord %>" /> -
+			<input type="text" class="translated" value="<%- translatedWord %>" />
+			<button type="submit" class="save-edit button">save</button>
+			<div class="destroy" title="delete entry">x</div>
+		</div>
+	</script>
+
+<script type="text/javascript" src="scripts/underscore.js" data-main="main"></script>
+<script type="text/javascript" src="scripts/backbone.js"></script>
+<script type="text/javascript" src="scripts/localstorage.js" data-main="main"></script>
+<script type="text/javascript" src="scripts/model-todo.js" data-main="main"></script>
+<script type="text/javascript" src="scripts/collection-todos.js" data-main="main"></script>
+<script type="text/javascript" src="scripts/view-todo.js" data-main="main"></script>
+<script type="text/javascript" src="scripts/view-app.js" data-main="main"></script>
+<script type="text/javascript" src="scripts/router.js" data-main="main"></script>
+<script type="text/javascript" src="scripts/app.js" data-main="main"></script>
+</body>
+</html>
+

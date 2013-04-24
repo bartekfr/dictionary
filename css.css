@@ -1,0 +1,168 @@
+html,
+body,
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font: 14px  Arial, sans-serif;
+	line-height: 1.4em;
+	background: #eaeaea ;
+	color: #4d4d4d;
+	width: 800px;
+	margin: 0 auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-ms-font-smoothing: antialiased;
+	-o-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+button{
+	margin: 0;
+	padding: 0;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.button {
+	display: inline-block;
+	padding: 3px 5px;
+	border-radius: 3px;
+	background: #1197ff;
+	color: #fff;
+	font-size: 16px;
+	line-height: 1.1;
+}
+
+input,
+button {
+	font-family: Arial;
+}
+
+input {
+	text-indent: 5px;
+}
+
+
+#dictionary {
+	padding: 0 90px 50px 90px;
+	box-shadow: 0 0 50px #aaa;
+}
+
+h1 {
+	margin: 0;
+	padding: 20px 0;
+	font-size: 24px;
+}
+
+/*adding new entry section*/
+
+#dictionary .entry-add,
+#dictionary .footer {
+	padding: 15px;
+	background: #AFB303;
+}
+
+#dictionary .entry-add  label{
+	display: none;
+}
+
+#dictionary .entry-add input {
+	padding: 2px 2px;
+	border: 0;
+	font-size: 16px;
+}
+
+#dictionary .error {
+	padding: 5px;
+	min-height: 20px;
+	color: #ff0000;
+}
+
+.term-list {
+	list-style: none;
+	margin: 20px 0;
+}
+
+/* entry item */
+.term-list .entry-item {
+	position: relative;
+	padding: 8px;
+	border-bottom: 2px solid #AFB303;
+	font-size: 18px;
+	-moz-transition: background-color 0.6s;
+}
+
+.term-list .entry-item .edit {
+	position: relative;
+	top: 2px;
+}
+
+.term-list .entry-item input {
+	background: none;
+	border: none;
+	font-size: 15px;
+	color: #000;
+	cursor: pointer;
+}
+
+.term-list .editing input[type='text']{
+	background: #fff;
+	height: 20px;
+	border: 1px solid #000;
+	cursor: text;
+}
+
+.term-list .entry-item:hover {
+	background-color: #C9CC22;
+}
+
+.term-list .save-edit{
+	display: none;
+	font-size: 14px;
+}
+
+.term-list .editing .save-edit{
+	display: inline-block;
+}
+
+.term-list .destroy {
+	float: right;
+	width: 25px;
+	height: 25px;
+	border-radius: 3px;
+	line-height: 23px;
+	font-size: 20px;
+	text-align: center;
+	color: #fff;
+	background-color: #1197ff;
+	cursor: pointer;
+	display: none;
+}
+
+.term-list .entry-item:hover .destroy {
+	display: block;
+}
+
+.entry-item .english {
+	font-weight: bold;
+}
+
+.entry-item .translated {
+	font-style: italic;
+	font-size: 16px;
+}
+
+
+footer {
+	padding: 5px;
+	font-size: 11px;
+}
+
+footer a {
+	color: #000;
+	text-decoration: none;
+}

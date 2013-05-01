@@ -59,7 +59,7 @@ app.EntryView = Backbone.View.extend({
 	},
 
 	updateOnEnter: function( e ) {
-		if ( e.which === ENTER_KEY ) {
+		if ( e.which === 13 ) {
 			this.save();
 			return false;
 		} else {

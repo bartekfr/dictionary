@@ -57,7 +57,6 @@ app.EntryView = Backbone.View.extend({
 		this.render();
 		this.model.save();
 	},
-
 	updateOnEnter: function( e ) {
 		if ( e.which === 13 ) {
 			this.save();
@@ -68,7 +67,6 @@ app.EntryView = Backbone.View.extend({
 			}
 		}
 	},
-
 	clear: function() {
 		this.model.destroy();
 	},

@@ -3,7 +3,6 @@ var app = app || {};
 app.EntryView = Backbone.View.extend({
 	tagName:  'li',
 	className: 'entry-item',
-
 	template: _.template( $('#item-template').html() ),
 
 	events: {

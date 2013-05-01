@@ -5,8 +5,10 @@ app.AppView = Backbone.View.extend({
 	//statsTemplate: _.template(),
 	events: {
 		'click #save': 'addEntry',
+		'click #search': 'search',
 		'keypress #eng-word': 'keypress',
-		'keypress #translated-word': 'keypress'
+		'keypress #translated-word': 'keypress',
+		'click #clear': 'clear'
 	},
 	initialize: function() {
 		this.save = this.$('#save');
@@ -41,6 +43,23 @@ app.AppView = Backbone.View.extend({
 		this.$list.empty();
 		window.app.entries.fetch();
 	},
+	search: function() {
+		var englishWord = this.$englishWord.val();
+		if(englishWord === '') {
+			app.entries.show();
+			return false;
+		}
+		var entry = app.entries.where({'englishWord': englishWord})[0];
+		if(typeof entry === 'undefined') {
+			this.$error.show().html('there is no such word in dictionary').delay(1000).fadeOut(1000);
+			return false;
+		}
+		var translatedWord = entry.get('translatedWord');
+		app.entries.each(function(entry) {
+			entry.trigger('hide');
+		});
+		entry.trigger('show');
+	},
 	add: function(entry) {
 		var view = new app.EntryView({model: entry});
 		this.$list.append(view.render().el);
@@ -56,8 +75,13 @@ app.AppView = Backbone.View.extend({
 		this.$error.show().html(error).delay(1000).fadeOut(1000);
 	},
 	keypress: function(e) {
-		if(e.which === ENTER_KEY) {
+		if(e.which === 13) {
 			this.addEntry();
 		}
+	},
+	clear: function() {
+		app.entries.show();
+		this.$translatedWord.val('');
+		this.$englishWord.val('');
 	}
-})
+});

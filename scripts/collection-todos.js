@@ -5,6 +5,16 @@ app.EntriesCollection = Backbone.Collection.extend({
 	localStorage: new Backbone.LocalStorage('dictionary-entries2'),
 	comparator: function(entry) {
 		return entry.get('englishWord');
+	},
+	show: function() {
+		_.each(this.models, function(model) {
+			model.trigger('show');
+		});
+	},
+	hide: function() {
+		_.each(this.models, function(model) {
+			model.trigger('hide');
+		});
 	}
 });
 

@@ -19,6 +19,8 @@ app.EntryView = Backbone.View.extend({
 	initialize: function() {
 		this.listenTo(this.model, 'change', this.render);
 		this.listenTo(this.model, 'destroy', this.remove);
+		this.listenTo(this.model, 'hide', this.hide);
+		this.listenTo(this.model, 'show', this.show);
 	},
 
 	render: function() {
@@ -40,6 +42,12 @@ app.EntryView = Backbone.View.extend({
 		} else {
 			this.$el.removeClass('editing');
 		}
+	},
+	hide: function() {
+		this.$el.hide();
+	},
+	show: function() {
+		this.$el.show();
 	},
 	save: function() {
 		this.model.set({

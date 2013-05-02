@@ -49,6 +49,9 @@ app.AppView = Backbone.View.extend({
 			app.entries.show();
 			return false;
 		}
+		this.showWord(englishWord);
+	},
+	showWord: function(englishWord) {
 		var entry = app.entries.where({'englishWord': englishWord})[0];
 		if(typeof entry === 'undefined') {
 			this.$error.show().html('there is no such word in dictionary').delay(1000).fadeOut(1000);
@@ -59,6 +62,7 @@ app.AppView = Backbone.View.extend({
 			entry.trigger('hide');
 		});
 		entry.trigger('show');
+		app.router.navigate(englishWord);
 	},
 	add: function(entry) {
 		var view = new app.EntryView({model: entry});
@@ -83,5 +87,6 @@ app.AppView = Backbone.View.extend({
 		app.entries.show();
 		this.$translatedWord.val('');
 		this.$englishWord.val('');
+		app.router.navigate('');
 	}
 });

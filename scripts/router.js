@@ -5,9 +5,8 @@ app.Router = Backbone.Router.extend({
 		":word": "showWord"
 	},
 	showWord: function (word) {
-		console.log(word);
+		appView.showWord(word);
 	}
 });
-var router = new app.Router();
-
-Backbone.history.start() 
+app.router = new app.Router();
+Backbone.history.start();

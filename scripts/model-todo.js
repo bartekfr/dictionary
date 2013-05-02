@@ -6,7 +6,7 @@ app.Entry = Backbone.Model.extend({
 	},
 	validate: function(attrs, options) {
 		if(attrs.englishWord === '' || attrs.translatedWord === '' ) {
-			return "Value can't be empty.";
+			return "Neither word nor translation can be empty.";
 		} 
 	}
 });

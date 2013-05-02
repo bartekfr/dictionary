@@ -4,7 +4,6 @@ app.EntryView = Backbone.View.extend({
 	tagName:  'li',
 	className: 'entry-item',
 	template: _.template( $('#item-template').html() ),
-
 	events: {
 		'click .edit':	'editHandler',
 		'click .destroy':	'clear',
@@ -21,7 +20,6 @@ app.EntryView = Backbone.View.extend({
 		this.listenTo(this.model, 'hide', this.hide);
 		this.listenTo(this.model, 'show', this.show);
 	},
-
 	render: function() {
 		this.$el.removeClass('editing');
 		this.$el.html( this.template( this.model.toJSON() ) );

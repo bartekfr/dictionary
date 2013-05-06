@@ -49,7 +49,7 @@ app.EntryView = Backbone.View.extend({
 	save: function() {
 		this.model.set({
 			englishWord: this.$english.val(),
-			translatedWord: this.$translated.val()			
+			translatedWord: this.$translated.val()
 		}, {validate: true});
 		this.render();
 		this.model.save();
@@ -67,7 +67,7 @@ app.EntryView = Backbone.View.extend({
 	clear: function() {
 		this.model.destroy();
 	},
-	
+
 	err: function() {
 		alert('error');
 	},

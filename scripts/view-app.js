@@ -17,11 +17,11 @@ app.AppView = Backbone.View.extend({
 		this.$main = this.$('#main');
 		this.$error = this.$('.error span');
 		this.$list = $('.term-list');
-		
-		window.app.entries.on('add', this.add, this);
-		window.app.entries.on('reset', this.addAll, this);
+
+		app.entries.on('add', this.add, this);
+		app.entries.on('reset', this.addAll, this);
 		//app.entries.on('invalid', this.err, this);
-		window.app.entries.fetch();
+		app.entries.fetch();
 	},
 	addEntry: function() {
 		var english = this.$englishWord.val();
@@ -32,7 +32,7 @@ app.AppView = Backbone.View.extend({
 			englishWord: english,
 			translatedWord: translated
 		},{validate: true});
-		
+
 		if(entry.validationError) {
 			return false;
 		}
@@ -41,7 +41,7 @@ app.AppView = Backbone.View.extend({
 		this.$englishWord.val('');
 		this.$translatedWord.val('');
 		this.$list.empty();
-		window.app.entries.fetch();
+		app.entries.fetch();
 	},
 	search: function() {
 		var englishWord = this.$englishWord.val();
@@ -73,7 +73,7 @@ app.AppView = Backbone.View.extend({
 	},
 	addAll: function() {
 		this.$('#term-list').html('');
-		app.entries.each(this.add, this);	
+		app.entries.each(this.add, this);
 	},
 	err: function(model, error) {
 		this.$error.show().html(error).delay(1000).fadeOut(1000);

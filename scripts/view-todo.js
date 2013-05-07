@@ -13,7 +13,6 @@ app.EntryView = Backbone.View.extend({
 		'keypress .english': 'updateOnEnter',
 		'keypress .translated': 'updateOnEnter'
 	},
-
 	initialize: function() {
 		this.listenTo(this.model, 'change', this.render);
 		this.listenTo(this.model, 'destroy', this.remove);
@@ -21,11 +20,12 @@ app.EntryView = Backbone.View.extend({
 		this.listenTo(this.model, 'show', this.show);
 	},
 	render: function() {
-		this.$el.removeClass('editing');
 		this.$el.html( this.template( this.model.toJSON() ) );
 		this.$english = this.$el.find('.english');
 		this.$translated = this.$el.find('.translated');
 		this.$edit = this.$el.find('.edit');
+		this.$el.removeClass('editing');
+		this.$edit.removeAttr('checked');
 		return this;
 	},
 	edit: function() {
@@ -47,9 +47,11 @@ app.EntryView = Backbone.View.extend({
 		this.$el.show();
 	},
 	save: function() {
+		var eng = this.$english.val();
+		var translated = this.$translated.val();
 		this.model.set({
-			englishWord: this.$english.val(),
-			translatedWord: this.$translated.val()
+			englishWord: eng.trim(),
+			translatedWord: translated.trim()
 		}, {validate: true});
 		this.render();
 		this.model.save();

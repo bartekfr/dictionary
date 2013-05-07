@@ -29,10 +29,9 @@ app.AppView = Backbone.View.extend({
 		var entry = new app.Entry();
 		entry.on('invalid', this.err, this);
 		entry.set({
-			englishWord: english,
-			translatedWord: translated
+			englishWord: english.trim(),
+			translatedWord: translated.trim()
 		},{validate: true});
-
 		if(entry.validationError) {
 			return false;
 		}
@@ -40,20 +39,31 @@ app.AppView = Backbone.View.extend({
 		this.$error.html('');
 		this.$englishWord.val('');
 		this.$translatedWord.val('');
-		this.$list.empty();
-		app.entries.fetch();
+		//this.$list.empty();
+		//app.entries.fetch();
 	},
 	search: function() {
 		var englishWord = this.$englishWord.val();
-		if(englishWord === '') {
+		var translatedWord = this.$translatedWord.val();
+		if(englishWord === '' && translatedWord === '') {
 			app.entries.show();
 			return false;
 		}
-		this.showWord(englishWord);
+		if(englishWord) {
+			this.showWord(englishWord);
+		} else if (translatedWord) {
+
+			this.showWord(null, translatedWord);
+		}
 	},
-	showWord: function(englishWord) {
-		var entries = app.entries.where({'englishWord': englishWord});
-		if(typeof entries === 'undefined') {
+	showWord: function(englishWord, translatedWord) {
+		var entries;
+		if(englishWord !== null) {
+			entries = app.entries.where({'englishWord': englishWord});
+		} else if (typeof translatedWord !== 'undefined') {
+			entries = app.entries.where({'translatedWord': translatedWord});
+		}
+		if(!entries.length) {
 			this.$error.show().html('there is no such word in dictionary').delay(1000).fadeOut(1000);
 			return false;
 		}
@@ -71,7 +81,6 @@ app.AppView = Backbone.View.extend({
 		this.$list.append(view.render().el);
 		entry.on('invalid', this.err, this);
 		entry.save();
-
 	},
 	addAll: function() {
 		this.$('#term-list').html('');

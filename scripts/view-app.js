@@ -6,8 +6,8 @@ app.AppView = Backbone.View.extend({
 	events: {
 		'click #save': 'addEntry',
 		'click #search': 'search',
-		'keypress #eng-word': 'keypress',
-		'keypress #translated-word': 'keypress',
+		'keyup #eng-word': 'keypress',
+		'keyup #translated-word': 'keypress',
 		'click #clear': 'clear'
 	},
 	initialize: function() {

@@ -426,6 +426,7 @@
     // If the server returns an attributes hash that differs, the model's
     // state will be `set` again.
     save: function(key, val, options) {
+
       var attrs, success, method, xhr, attributes = this.attributes;
 
       // Handle both `"key", value` and `{key: value}` -style arguments.
@@ -435,9 +436,8 @@
       } else {
         (attrs = {})[key] = val;
       }
-
       // If we're not waiting and attributes exist, save acts as `set(attr).save(null, opts)`.
-      if (attrs && (!options || !options.wait) && !this.set(attrs, options)) return false;
+      if (attrs && (!options || !options.wait) && !this.set(attrs, options)) {return false;}
 
       options = _.extend({validate: true}, options);
 

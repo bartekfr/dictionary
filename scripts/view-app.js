@@ -91,9 +91,11 @@ var app = app || {};
 			this.$translatedWord.val('');
 			this.$englishWord.val('');
 			app.router.navigate('');
+			return false;
 		},
 		delete: function() {
 			this.trigger('deleteAction');
+			return false;
 		}
 	});
 })(jQuery);

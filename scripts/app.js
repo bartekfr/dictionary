@@ -1,3 +1,2 @@
 var app = app || {};
-var appView;
-appView = new app.AppView();
+app.main = new app.AppView();

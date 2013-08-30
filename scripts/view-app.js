@@ -62,21 +62,21 @@ var app = app || {};
 			var matched;
 			if(englishWord !== null) {
 				matched = app.entries.where({'englishWord': englishWord});
+				app.router.navigate("en/" + englishWord);
 			} else if (typeof translatedWord !== 'undefined') {
 				matched = app.entries.where({'translatedWord': translatedWord});
+				app.router.navigate("pl/" + translatedWord);
 			}
 			if(!matched.length) {
 				this.$error.show().html('there is no such word in dictionary').delay(1000).fadeOut(1000);
 				return false;
 			}
-
 			app.entries.each(function(entry) {
 				entry.trigger('hide');
 			});
 			_.each(matched, function(entry) {
 				entry.trigger('show');
 			});
-			app.router.navigate(englishWord);
 		},
 		err: function(model, error) {
 			this.$error.show().html(error).delay(1000).fadeOut(1000);

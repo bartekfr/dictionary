@@ -3,7 +3,7 @@ var app = app || {};
 (function($){
 	app.EntriesCollection = Backbone.Collection.extend({
 		model: app.Entry,
-		localStorage: new Backbone.LocalStorage('dictionary-entries2'),
+		url: app.config.baseUrl + 'EntriesCollection' + app.config.params,
 		comparator: function(entry) {
 			return entry.get('englishWord');
 		},
@@ -21,4 +21,3 @@ var app = app || {};
 
 	app.entries = new app.EntriesCollection();
 })(jQuery);
-

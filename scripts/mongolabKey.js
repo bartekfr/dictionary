@@ -3,6 +3,6 @@ var app = app || {};
 	app.config = {
 		baseUrl: 'https://api.mongolab.com/api/1/databases/dict/collections/',
 		//use you MongoLab API key
-		params: '?apiKey=YoutApiKey'
+		params: '?apiKey=YourApiKey'
 	};
 })();

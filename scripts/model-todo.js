@@ -3,7 +3,7 @@ var app = app || {};
 (function($){
 	app.Entry = Backbone.Model.extend({
 		defaults: {
-
+			englishWord: ''
 		},
 		urlRoot: 'model',
 		validate: function(attrs, options) {

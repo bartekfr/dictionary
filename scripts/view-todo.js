@@ -49,7 +49,6 @@ var app = app || {};
 					that.render();
 				}
 			});
-		
 		},
 		updateOnEnter: function( e ) {
 			if ( e.which === 13 ) {

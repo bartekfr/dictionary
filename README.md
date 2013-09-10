@@ -4,7 +4,7 @@ Backbone dictionary app
 ##simple backbone dictionary app
 
 Before initializing application you have to create MongoLab account,
-create appropriate collection. Then create mongolabKey.js file and define there configuartion object like below using you mongolabAPI key
+create appropriate collection. Then create mongolabKey.js file and define there configuartion object like below using you mongolab API key
 
 	var app = app || {};
 	app.config = {
